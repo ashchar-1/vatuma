@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="style.css"/>
+  <title>Tacarigua de Brión</title>
+</head>
+
+<body>
+
+  <!-- Imagen principal -->
+<div class="imagen-contenedor">
+  <h2>Tacarigua de Brión</h2>
+  <img src="Tacarigua.jpg" alt="Vista de Tacarigua de Brión" />
+  </div>
+
+  <!-- Menú de navegación -->
+  <div class="menu">
+    <a href="#ubicacion">Ubicación geográfica</a>
+    <a href="#historia">Historia</a>
+    <a href="#cultura">Cultura</a>
+  </div>
+
+  <!-- Sección: Ubicación geográfica -->
+  <div class="seccion" id="ubicacion">
+    <h2>Ubicación geográfica</h2>
+    <p>Tacarigua de Brión es una localidad ubicada en el estado Miranda, Venezuela. Se encuentra en la región costera del municipio Brión, cerca de Higuerote, y forma parte del eje turístico del litoral central.</p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3931.896464712775!2d-66.092!3d10.495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a5f3d1c1e6f3f%3A0x8c2a5f3d1c1e6f3f!2sTacarigua%20de%20Bri%C3%B3n!5e0!3m2!1ses!2sve!4v0000000000000" allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <!-- Sección: Historia -->
+  <div class="seccion" id="historia">
+    <h2>Historia</h2>
+    <p>Tacarigua de Brión tiene raíces coloniales y afrodescendientes. Su nombre proviene del vocablo indígena “Tacarigua”, que significa “lugar de agua”. Durante la época colonial, fue un asentamiento agrícola y pesquero. En el siglo XX, comenzó a desarrollarse como destino turístico por su cercanía a las playas de Higuerote y Chirimena.</p>
+  </div>
+
+  <!-- Sección: Cultura -->
+  <div class="seccion" id="cultura">
+    <h2>Cultura</h2>
+    <p>La cultura de Tacarigua de Brión está marcada por tradiciones afrovenezolanas, música de tambores, fiestas patronales y gastronomía típica. Destacan celebraciones como San Juan Bautista, donde se mezclan la devoción religiosa con expresiones artísticas y comunitarias.</p>
+  </div>
+<button class="boton-planeta" onclick="buscarEnGoogle('Tacarigua de Brión turismo')">🌐</button>
+
+
+
+<script>
+  function buscarEnGoogle(tema) {
+    const url = 'https://www.google.com/search?q=' + encodeURIComponent(tema);
+    window.open(url, '_blank');
+}
+</script>
+
+</body>
+</html>
+ 
