@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="style.css"/>
+  <title>Birongo</title>
+</head>
+
+<body>
+
+  <!-- Imagen principal -->
+  <h2>Birongo </h2>
+  <div class="imagen-principal" style="background-image: url('Birongo.jpg');"></div>
+
+  <!-- Menú de navegación -->
+  <nav class="menu">
+    <a href="#ubicacion">Ubicación geográfica</a>
+    <a href="#historia">Historia</a>
+    <a href="#cultura">Cultura</a>
+  </nav>
+
+  <!-- Sección: Ubicación geográfica -->
+  <section class="seccion" id="ubicacion">
+    <h2>Ubicación geográfica</h2>
+    <p>Birongo es una localidad del estado Miranda, Venezuela, ubicada en el municipio Brión. Rodeado de montañas y vegetación tropical, es conocido por su belleza natural y su conexión espiritual con la tierra.</p>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.019319865239!2d-66.661111!3d10.472222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a5f7e3f6c7b3b%3A0x7f2e2f7e3f6c7b3b!2sBirongo%2C%20Miranda%2C%20Venezuela!5e0!3m2!1ses!2sve!4v0000000000000"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </section>
+
+  <!-- Sección: Historia -->
+  <section class="seccion" id="historia">
+    <h2>Historia</h2>
+    <p>Birongo tiene raíces profundas en la cultura afrovenezolana. Fue fundado por comunidades descendientes de africanos esclavizados que conservaron sus tradiciones, saberes ancestrales y prácticas espirituales.</p>
+  </section>
+
+  <!-- Sección: Cultura -->
+  <section class="seccion" id="cultura">
+    <h2>Cultura</h2>
+    <p>La cultura de Birongo está marcada por la espiritualidad, el uso de plantas medicinales, y la práctica del espiritismo. Sus habitantes celebran rituales y festividades que conectan con sus ancestros y la naturaleza.</p>
+  </section>
+<button class="boton-planeta" onclick="buscarEnGoogle('Birongo turismo')">🌐</button>
+
+
+
+<script>
+  function buscarEnGoogle(tema) {
+    const url = 'https://www.google.com/search?q=' + encodeURIComponent(tema);
+    window.open(url, '_blank');
+}
+</script>
+
+</body>
+</html>
+ 
