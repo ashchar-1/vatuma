@@ -1,0 +1,351 @@
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #e0f7fa, #ffffff);
+  color: #333;
+  margin: 0;
+}
+
+/* Título principal */
+.titulo {
+  text-align: center;
+  font-size: 48px;
+  color: #28a745;
+  padding: 20px 0;
+  text-shadow: 2px 2px #fff;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* Menú hamburguesa */
+.menu-toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #5bc0de;
+  color: #fff;
+  padding: 10px 14px;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 4px;
+  z-index: 9999;
+  border: none;
+}
+
+/* Menú desplegable con scroll interno */
+.nav-links {
+  display: none;
+  position: fixed;
+  top: 60px;
+  right: 10px;
+  background-color: #5bc0de;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  z-index: 9998;
+  max-height: 100px; /* Solo se ven 2 opciones */
+  overflow-y: auto;
+  width: 180px;
+}
+
+.nav-links.active {
+  display: block;
+}
+
+.nav-links li a {
+  display: block;
+  padding: 12px 16px;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links li a:hover {
+  background-color: #31b0d5;
+}
+
+/* Carrusel horizontal */
+.carrusel-container {
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+  z-index: 1; /* Asegura que el carrusel esté debajo del menú */
+}
+
+.slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 20px;
+  scroll-behavior: smooth;
+}
+
+.slider::-webkit-scrollbar {
+  display: none;
+}
+
+.contenedor {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  width: 300px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.contenedor img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.contenedor h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #28a745;
+}
+
+.contenedor p {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Botones de navegación del carrusel */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #5bc0de;
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+.nav-btn:hover {
+  background-color: #31b0d5;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+/* Botón flotante para publicar (opcional) */
+.publicar-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #5bc0de;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.publicar-btn:hover {
+  background-color: #31b0d5;
+}
+
+/* Enlaces generales */
+a {
+  text-decoration: none;
+}
+
+
+
+/* Menú hamburguesa */
+.menu-toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #5bc0de;
+  color: #fff;
+  padding: 10px 14px;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 4px;
+  z-index: 9999;
+  border: none;
+}
+
+/* Contenedor del menú desplegable */
+.nav-links {
+  display: none;
+  position: fixed;
+  top: 60px;
+  right: 10px;
+  background-color: #5bc0de;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  z-index: 9998;
+  max-height: 100px; /* Solo se ven 2 opciones */
+  overflow-y: auto;
+  width: 180px;
+}
+
+/* Activación del menú */
+.nav-links.active {
+  display: block;
+}
+
+/* Enlaces del menú */
+.nav-links li a {
+  display: block;
+  padding: 12px 16px;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links li a:hover {
+  background-color: #31b0d5;
+}
+
+/* Asegurar que el carrusel esté debajo */
+.carrusel-container {
+  position: relative;
+  z-index: 1;
+}
+/* =========================================
+   FOOTER TACAI PROJECT
+   ========================================= */
+.footer-tacai {
+  background: linear-gradient(135deg, #2c3e50, #1a252f);
+  color: #f8f9fa;
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 40px;
+  border-top: 4px solid #28a745;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.2);
+  /* Asegura que el footer quede debajo de todo */
+  position: relative; 
+  z-index: 1; 
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-content p {
+  margin: 0;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.footer-content strong {
+  color: #5bc0de;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Enlace de contacto suave y moderno */
+.soft-link {
+  color: #28a745;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.soft-link:hover {
+  color: #5bc0de;
+  text-shadow: 0 0 8px rgba(91, 192, 222, 0.4);
+}
+
+.feedback-text {
+  margin-top: 15px !important;
+  font-size: 13px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 15px;
+  color: #b0bec5;
+}
+
+/* =========================================
+   ESTILOS DEL SPLASH SCREEN
+   ========================================= */
+#splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #ffffff; /* Color de fondo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000; /* Por encima de todo, incluso del menú */
+  transition: opacity 0.5s ease, visibility 0.5s;
+}
+
+.splash-content {
+  text-align: center;
+}
+
+.splash-logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 20px;
+  /* Animación de pulso suave */
+  animation: pulse 2s infinite ease-in-out;
+}
+
+#splash-screen h1 {
+  color: #28a745;
+  font-size: 24px;
+  margin-top: 15px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Spinner de carga */
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #5bc0de;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+/* Animaciones */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+/* Clase para ocultar el splash */
+.hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
