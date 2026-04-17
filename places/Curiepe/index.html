@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+ <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="style.css"/>
+  
+</head>
+<body>
+
+  <!-- Imagen principal -->
+  <h2>Curiepe</h2>
+  <div class="imagen-principal" style="background-image: url('Curiepe.jpg');"></div>
+
+  <!-- Menú de navegación -->
+  <nav class="menu">
+    <a href="#ubicacion">Ubicación geográfica</a>
+    <a href="#historia">Historia</a>
+    <a href="#cultura">Cultura</a>
+  </nav>
+
+  <!-- Sección: Ubicación geográfica -->
+  <section class="seccion" id="ubicacion">
+    <h2>Ubicación geográfica</h2>
+    <p>Curiepe se encuentra en el estado Miranda, Venezuela, y es conocido por su rica herencia afrovenezolana.</p>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.019319865239!2d-66.661111!3d10.472222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a5f7e3f6c7b3b%3A0x7f2e2f7e3f6c7b3b!2sCuriepe%2C%20Miranda%2C%20Venezuela!5e0!3m2!1ses!2sve!4v0000000000000"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </section>
+
+  <!-- Sección: Historia -->
+  <section class="seccion" id="historia">
+    <h2>Historia</h2>
+    <p>Curiepe fue fundado en el siglo XVIII por descendientes de africanos esclavizados. Su historia está marcada por la resistencia cultural y la preservación de tradiciones ancestrales.</p>
+  </section>
+
+  <!-- Sección: Cultura -->
+  <section class="seccion" id="cultura">
+    <h2>Cultura</h2>
+    <p>La cultura de Curiepe es vibrante y única. Destacan sus celebraciones del **San Juan Bautista**, con tambores, danzas y cantos que reflejan la espiritualidad y el legado afrovenezolano.</p>
+  </section>
+<button class="boton-planeta" onclick="buscarEnGoogle('Curiepe turismo')">🌐</button>
+
+<script>
+  function buscarEnGoogle(tema) {
+    const url = 'https://www.google.com/search?q=' + encodeURIComponent(tema);
+    window.open(url, '_blank');
+}
+</script>
+
+</body>
+</html>
