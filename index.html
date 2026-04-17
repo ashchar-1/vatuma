@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#28a745">
+  <title>Vatuma</title>
+    <link rel="stylesheet" href="styles/style.css"/>
+     <link rel="icon" type="image/png" href="logo-upuru.png">
+
+</head>
+<body>
+  
+  <div id="splash-screen">
+  <div class="splash-content">
+    <img src="img/icon-512.png" alt="Logo TACAI" class="splash-logo">
+    <div class="loader"></div>
+    <h1>Vatuma</h1>
+    <p class="splash-subtitle">Una creación de <strong>Luis Hernández</strong></p>
+       <p style="font-size: 10px; margin-top: 20px; letter-spacing: 2px; opacity: 0.6;">TACAI DIGITAL 2026</p>
+    
+  </div>
+</div>
+
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <ul class="nav-links" id="menu">
+    <li><a href="trayecto/tray I/index.html">Trayecto I</a></li>
+    <li><a href="trayecto/tray II/index.html">Trayecto II</a></li>
+    <li><a href="trayecto/tray III/index.html">Trayecto III</a></li>
+    <li><a href="trayecto/tray IV/index.html">Trayecto IV</a></li>
+  </ul>
+
+  <h1 class="titulo">VATUMA</h1>
+
+  <div class="carrusel-container">
+    <button class="nav-btn prev" onclick="moverCarrusel(-1)">❮</button>
+    <button class="nav-btn next" onclick="moverCarrusel(1)">❯</button>
+
+  <div class="slider" id="slider">
+      <div class="contenedor">
+        <img src="img/Birongo.jpg" alt="Birongo">
+        <h2><a href="places/Birongo/index.html">Birongo</a></h2>
+        <p>Birongo es un pueblo mágico del estado Miranda...</p>
+      </div>
+
+      <div class="contenedor">
+        <img src="img/Caucagua.jpg" alt="Caucagua">
+        <h2><a href="places/Caucagua/index.html">Caucagua</a></h2>
+        <p>Caucagua, ubicada en el corazón de Barlovento...</p>
+      </div>
+
+      <div class="contenedor">
+        <img src="img/curiepe.jpg" alt="Curiepe">
+        <h2><a href="places/Curiepe/index.html">Curiepe</a></h2>
+        <p>Curiepe es cuna de la cultura afrovenezolana...</p>
+      </div>
+
+      <div class="contenedor">
+        <img src="img/higuerote.jpg" alt="Higuerote">
+        <h2><a href="places/Higuerote/index.html">Higuerote</a></h2>
+        <p>Higuerote es el principal destino turístico...</p>
+      </div>
+
+      <div class="contenedor">
+        <img src="img/Mamporal.jpg" alt="Mamporal">
+        <h2><a href="places/Mamporal/index.html">Mamporal</a></h2>
+        <p>Mamporal, capital del municipio Buroz...</p>
+      </div>
+
+      <div class="contenedor">
+        <img src="img/jose.jpg" alt="San José">
+        <h2><a href="places/San José de Barlovento/index.html">San José de Barlovento</a></h2>
+        <p>San José de Barlovento es una ciudad cálida...</p>
+      </div>
+
+      <div class="contenedor">
+        <img src="img/Tacarigua.jpg" alt="Tacarigua">
+        <h2><a href="/places/Tacarigua/index.html">Tacarigua</a></h2>
+        <p>Tacarigua es un destino que combina espiritualidad...</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("active");
+}
+
+    const slider = document.getElementById('slider');
+    const contenedores = slider.querySelectorAll('.contenedor');
+    let index = 0;
+
+    function moverCarrusel(direccion) {
+      index += direccion;
+      if (index < 0) index = contenedores.length - 1;
+      if (index>= contenedores.length) index = 0;
+      const scrollX = contenedores[index].offsetLeft;
+      slider.scrollTo({ left: scrollX, behavior: 'smooth'});
+}
+
+    setInterval(() => moverCarrusel(1), 80000);
+  
+  window.addEventListener('load', () => {
+  const splash = document.getElementById('splash-screen');
+  // Pequeño retraso de 1.5 segundos para que el usuario aprecie el logo
+  setTimeout(() => {
+    splash.classList.add('hidden');
+  }, 2500);
+});
+  </script>
+
+</body>
+ <footer class="footer-tacai">
+    <div class="footer-content">
+        <p>© <span id="year-copy">2026</span> <strong>Vatuma</strong> | Diseñado y desarrollado por: <strong>Luis Hernández</strong></p>
+        <p style="font-size: 11px; margin-top: -8px; opacity: 0.7;">Tecnología con Raíces • TACAI Project</p>
+        
+        <p class="feedback-text">
+            ¿Tienes alguna idea para mejorar esta herramienta? 
+            <a href="mailto:tacai2753@gmail.com?subject=Feedback%20Vatuma" class="soft-link">Escríbeme aquí</a>.
+        </p>
+    </div>
+</footer>
+
+</html>
