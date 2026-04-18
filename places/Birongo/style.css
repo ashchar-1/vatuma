@@ -1,0 +1,110 @@
+/* 1. Base y Tipografía */
+body {
+  margin: 0;
+  padding: 0 0 80px 0; /* Padding inferior para que el botón no tape el contenido */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: linear-gradient(to bottom, #d0f0f7, #a0e4dd, #68c4a3);
+  line-height: 1.6;
+  color: #333;
+}
+
+/* 2. Imagen Principal (Hero) */
+.imagen-principal {
+  width: 100%;
+  height: 25vh; /* Altura basada en la pantalla del móvil */
+  background-image: url('images/tacarigua.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* 3. Menú Adaptable */
+.menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Para que los botones bajen si no caben */
+  background-color: #5bc0de;
+  padding: 12px 5px;
+  gap: 10px; /* Espacio más ajustado para móviles */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  position: sticky; /* Se queda arriba al hacer scroll */
+  top: 0;
+  z-index: 999;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 15px; /* Área de toque más grande (Fat-finger friendly) */
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background-color: rgba(255,255,255,0.1);
+}
+
+/* 4. Contenedores de Contenido */
+.seccion, .imagen-contenedor {
+  background-color: #ffffff;
+  margin: 20px 15px; /* Margen lateral para que no toque los bordes del cel */
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 100%; /* Ocupa el ancho del móvil */
+  box-sizing: border-box;
+}
+
+h2 {
+  color: #28a745;
+  margin-top: 0;
+  font-size: 1.4rem;
+}
+
+/* 5. Multimedia (Maps, Videos, Img) */
+iframe, .imagen-contenedor img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9; /* Mantiene la proporción siempre */
+  border-radius: 12px;
+  display: block;
+}
+
+/* 6. Botón Planeta (Ubicación ergonómica) */
+.boton-planeta {
+  position: fixed;
+  bottom: 25px; /* En el móvil, mejor abajo a la derecha */
+  right: 20px;
+  background-color: #5bc0de;
+  color: white;
+  font-size: 26px;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.boton-planeta:active {
+  transform: scale(0.9);
+}
+
+/* --- AJUSTES PARA ESCRITORIO (PC) --- */
+@media (min-width: 768px) {
+  .imagen-principal { height: 300px; }
+  
+  .seccion, .imagen-contenedor {
+    margin: 30px auto;
+    max-width: 800px;
+  }
+
+  .boton-planeta {
+    top: 20px;
+    bottom: auto; /* Vuelve arriba en PC si prefieres */
+    width: 50px;
+    height: 50px;
+  }
+}
