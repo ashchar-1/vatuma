@@ -1,102 +1,112 @@
-/* 1. Base y tipografía */
+/* 1. Fondo general y reseteo */
 body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background: linear-gradient(135deg, #d0f0f7, #a0e4dd, #68c4a3);
-  color: #2c3e50;
-  -webkit-tap-highlight-color: transparent; /* Evita el recuadro gris al tocar botones */
+  background-color: #a0e4dd; /* Color de fondo general turquesa claro */
+  color: #333;
 }
 
-/* 2. Barra de Título (Si tienes el texto "Birongo" arriba) */
-header {
-  background-color: #2ecc71;
-  color: white;
-  padding: 15px;
-  text-align: center;
-  font-weight: bold;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+/* 2. Título principal (si lo usas como texto) */
+h1 {
+  background-color: #e0f7fa;
+  color: #28a745;
+  padding: 10px 15px;
+  font-size: 1.5rem;
+  margin: 0;
 }
 
-/* 3. Menú: Más alto y con botones claros */
+/* 3. Imagen principal (ocupa todo el ancho sin bordes) */
+.imagen-principal {
+  width: 100%;
+  height: 220px;
+  background-image: url('images/tacarigua.jpg');
+  background-size: cover;
+  background-position: center;
+  display: block;
+}
+
+/* 4. Barra de menú (botones estilo píldora) */
 .menu {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 12px;
   background-color: #5bc0de;
-  padding: 0; /* Quitamos padding para que los enlaces ocupen todo el alto */
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  padding: 15px 10px;
+  overflow-x: auto; /* Permite deslizar si no caben en pantallas muy pequeñas */
+  white-space: nowrap;
 }
 
 .menu a {
   color: white;
   text-decoration: none;
   font-weight: bold;
-  font-size: 11px; /* Un poco más pequeño para que quepa bien en una línea */
-  text-transform: uppercase;
-  padding: 18px 5px; /* Más padding vertical para que sea fácil de tocar */
-  flex: 1;
-  text-align: center;
-  transition: background 0.3s;
+  font-size: 14px;
+  padding: 10px 18px;
+  background-color: rgba(255, 255, 255, 0.25); /* Fondo translúcido del botón */
+  border-radius: 25px; /* Crea el efecto de píldora redonda */
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .menu a:active {
-  background-color: rgba(255,255,255,0.2);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
-/* 4. Secciones: Tarjetas más elegantes */
+/* 5. Tarjeta blanca de contenido */
 .seccion {
   background-color: #ffffff;
-  margin: 15px 12px;
+  margin: 20px 15px; /* Margen para dejar ver el fondo turquesa de la app */
   padding: 20px;
-  border-radius: 18px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  border-radius: 16px; /* Bordes redondeados de la tarjeta */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
-h2 {
-  color: #27ae60;
-  font-size: 1.3rem;
-  margin-bottom: 12px;
+/* 6. Textos dentro de la tarjeta */
+.seccion h2 {
+  color: #28a745;
+  font-size: 1.4rem;
   margin-top: 0;
+  margin-bottom: 15px;
 }
 
-p {
-  font-size: 0.95rem;
+.seccion p {
+  font-size: 1.05rem; /* Tamaño ideal para lectura en móvil */
   line-height: 1.6;
-  margin-bottom: 0;
+  color: #333;
+  margin-bottom: 20px;
 }
 
-/* 5. EL MAPA: Aquí está el cambio clave */
+/* 7. Mapa u otros iframes (ajustados a la tarjeta) */
 iframe {
-  width: 100% !important;
-  height: 320px; /* Aumentamos la altura para que se vea el pueblo */
-  border-radius: 14px;
-  border: 1px solid #eee;
-  margin-top: 10px;
+  width: 100%;
+  height: 250px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  display: block;
 }
 
-/* 6. Botón Planeta: Más compacto y estilizado */
+/* 8. Botón flotante */
 .boton-planeta {
   position: fixed;
-  bottom: 25px;
+  bottom: 30px;
   right: 20px;
-  background-color: #3498db;
+  background-color: #5bc0de;
   color: white;
-  font-size: 24px;
+  font-size: 28px;
   border: none;
   border-radius: 50%;
-  width: 58px;
-  height: 58px;
+  width: 60px;
+  height: 60px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1001;
 }
 
-/* Espacio final para que el botón no tape el texto */
-main {
-  padding-bottom: 80px;
+/* Espacio inferior para que el botón no tape texto */
+body::after {
+  content: "";
+  display: block;
+  height: 100px;
 }
