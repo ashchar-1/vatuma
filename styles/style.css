@@ -331,7 +331,66 @@ a {
   animation: spin 1s linear infinite;
   margin: 0 auto;
 }
+/* Contenedor principal con perspectiva */
+.carrusel-container {
+    perspective: 1000px;
+    overflow: hidden;
+    padding: 40px 0;
+}
 
+.slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+    height: 450px; /* Ajusta según tus imágenes */
+    position: relative;
+}
+
+.contenedor {
+    position: absolute;
+    width: 280px;
+    transition: all 0.5s ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+/* Estado Activo (Centro) */
+.contenedor.active {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 10;
+    transform: translate3d(0, 0, 0) scale(1.1);
+}
+
+/* Estado Anterior (Izquierda 3D) */
+.contenedor.prev-slide {
+    opacity: 0.6;
+    transform: translate3d(-110%, 0, -200px) rotateY(30deg);
+    z-index: 5;
+    pointer-events: auto;
+}
+
+/* Estado Siguiente (Derecha 3D) */
+.contenedor.next-slide {
+    opacity: 0.6;
+    transform: translate3d(110%, 0, -200px) rotateY(-30deg);
+    z-index: 5;
+    pointer-events: auto;
+}
+
+.contenedor img {
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+    height: 200px;
+    object-fit: cover;
+}
 /* Animaciones */
 @keyframes spin {
   0% { transform: rotate(0deg); }
