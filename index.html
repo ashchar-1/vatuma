@@ -8,8 +8,6 @@
   <title>Vatuma</title>
   <link rel="stylesheet" href="styles/style.css"/>
   <link rel="icon" type="image/png" href="img/icon-192.png">
-
-  
 </head>
 <body>
   
@@ -32,12 +30,10 @@
   </ul>
 
   <h1 class="titulo">VATUMA</h1>
-  <!-- BOTÓN DE SUSCRIPCIÓN A NOTIFICACIONES -->
-  <button id="suscribirse" style="margin-bottom:20px;">Suscribirse a notificaciones</button>
 
   <div class="carrusel-container">
-    <button class="nav-btn prev" onclick="moverCarrusel(-1)">❮</button>
-    <button class="nav-btn next" onclick="moverCarrusel(1)">❯</button>
+    <button class="nav-btn prev" onclick="interaccionUsuario(-1)">❮</button>
+    <button class="nav-btn next" onclick="interaccionUsuario(1)">❯</button>
 
     <div class="slider" id="slider">
       <div class="contenedor">
@@ -79,50 +75,110 @@
   </div>
 
   <script>
-    
-          // Control del menú lateral
-function toggleMenu() {
-  document.getElementById("menu").classList.toggle("active");
-}
-
-// Lógica del Slider 3D
-const contenedores = document.querySelectorAll('.contenedor');
-let indexActual = 0;
-
-function actualizarCarrusel() {
-  contenedores.forEach((c, i) => {
-    // Limpiamos clases previas
-    c.classList.remove('active', 'prev-slide', 'next-slide');
-    
-    if (i === indexActual) {
-      // Elemento al centro
-      c.classList.add('active');
-    } else if (i === (indexActual - 1 + contenedores.length) % contenedores.length) {
-      // Elemento a la izquierda (profundidad)
-      c.classList.add('prev-slide');
-    } else if (i === (indexActual + 1) % contenedores.length) {
-      // Elemento a la derecha (profundidad)
-      c.classList.add('next-slide');
+    // Control del menú lateral
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("active");
     }
-  });
-}
 
-function moverCarrusel(direccion) {
-  indexActual = (indexActual + direccion + contenedores.length) % contenedores.length;
-  actualizarCarrusel();
-}
+    // --- LÓGICA DEL SLIDER 3D ---
+    const slider = document.getElementById('slider');
+    const contenedores = document.querySelectorAll('.contenedor');
+    let indexActual = 0;
+    let autoPlayInterval;
 
-// Inicio automático del carrusel
-actualizarCarrusel();
-setInterval(() => moverCarrusel(1), 5000); 
+    function actualizarCarrusel() {
+      contenedores.forEach((c, i) => {
+        c.classList.remove('active', 'prev-slide', 'next-slide');
+        
+        if (i === indexActual) {
+          c.classList.add('active');
+        } else if (i === (indexActual - 1 + contenedores.length) % contenedores.length) {
+          c.classList.add('prev-slide');
+        } else if (i === (indexActual + 1) % contenedores.length) {
+          c.classList.add('next-slide');
+        }
+      });
+    }
 
-// Control del Splash Screen al cargar la página
-window.addEventListener('load', () => {
-  const splash = document.getElementById('splash-screen');
-  setTimeout(() => {
-    splash.classList.add('hidden');
-  }, 2500);
-});
+    function moverCarrusel(direccion) {
+      indexActual = (indexActual + direccion + contenedores.length) % contenedores.length;
+      actualizarCarrusel();
+    }
+
+    // Funciones para manejar la interacción manual y pausar el autoplay
+    function iniciarAutoPlay() {
+      autoPlayInterval = setInterval(() => moverCarrusel(1), 5000);
+    }
+
+    function resetearAutoPlay() {
+      clearInterval(autoPlayInterval);
+      iniciarAutoPlay();
+    }
+
+    function interaccionUsuario(direccion) {
+      moverCarrusel(direccion);
+      resetearAutoPlay();
+    }
+
+    // --- EVENTOS TÁCTILES Y DE ARRASTRE (SWIPE/DRAG) ---
+    let startX = 0;
+    let endX = 0;
+    let isDragging = false;
+
+    // Para móviles (Touch)
+    slider.addEventListener('touchstart', (e) => {
+      startX = e.changedTouches[0].screenX;
+      clearInterval(autoPlayInterval); // Pausa al tocar
+    }, {passive: true});
+
+    slider.addEventListener('touchend', (e) => {
+      endX = e.changedTouches[0].screenX;
+      manejarSwipe();
+      iniciarAutoPlay(); // Reanuda al soltar
+    });
+
+    // Para PC (Mouse)
+    slider.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.pageX;
+      clearInterval(autoPlayInterval);
+    });
+
+    slider.addEventListener('mouseup', (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      endX = e.pageX;
+      manejarSwipe();
+      iniciarAutoPlay();
+    });
+
+    slider.addEventListener('mouseleave', () => {
+      if (isDragging) {
+        isDragging = false;
+        iniciarAutoPlay();
+      }
+    });
+
+    function manejarSwipe() {
+      const umbral = 50; // Distancia mínima para considerar que fue un swipe
+      if (startX - endX > umbral) {
+        moverCarrusel(1); // Deslizó a la izquierda -> Siguiente
+      } else if (endX - startX > umbral) {
+        moverCarrusel(-1); // Deslizó a la derecha -> Anterior
+      }
+    }
+
+    // Inicialización
+    actualizarCarrusel();
+    iniciarAutoPlay();
+
+    // Control del Splash Screen
+    window.addEventListener('load', () => {
+      const splash = document.getElementById('splash-screen');
+      setTimeout(() => {
+        splash.classList.add('hidden');
+      }, 2500);
+    });
   </script>
 
 </body>
