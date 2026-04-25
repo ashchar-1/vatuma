@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 <head>
   <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
@@ -7,28 +6,26 @@
   <link rel="stylesheet" href="style.css"/>
   <title>Higuerote</title>
 </head>
-
 <body>
-
   <!-- Imagen principal -->
-<h2>Higuerote</h2> 
+  <h2>Higuerote</h2> 
   <div class="imagen-principal" style="background-image: url('higuerote.jpg');"></div>
-
-
 
   <!-- Menú de navegación -->
   <nav class="menu">
     <a href="#ubicacion">Ubicación geográfica</a>
     <a href="#historia">Historia</a>
     <a href="#cultura">Cultura</a>
+    <a href="#turismo">Turismo y naturaleza</a>
+    <a href="#fiestas">Fiestas y celebraciones</a>
   </nav>
 
   <!-- Sección: Ubicación geográfica -->
   <section class="seccion" id="ubicacion">
     <h2>Ubicación geográfica</h2>
-    <p>Higuerote está ubicado en el estado Miranda, Venezuela, en la región costera del municipio Brión. Es un destino turístico popular por sus playas y paisajes tropicales.</p>
+    <p>Higuerote está ubicado en el estado Miranda, Venezuela, específicamente en la región costera del municipio Brión. Se encuentra a unos 60 km al este de Caracas y es bañada por las aguas del mar Caribe. El área posee un clima tropical con temperaturas promedio de 26-32°C durante todo el año y es reconocida por sus playas, manglares y paisajes de gran belleza natural.</p>
     <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.019319865239!2d-66.083333!3d10.500000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a5f7e3f6c7b3b%3A0x7f2e2f7e3f6c7b3b!2sHiguerote%2C%20Miranda%2C%20Venezuela!5e0!3m2!1ses!2sve!4v0000000000000"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.019319865239!2d-66.083333!3d10.500000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a5f7e3f6c7b3b%3A0x7f2e2f7e3f6c7b3!2sHiguerote!5e0!3m2!1ses-419!2sve!4v1685578395004!5m2!1ses-419!2sve"
       allowfullscreen=""
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade">
@@ -38,22 +35,35 @@
   <!-- Sección: Historia -->
   <section class="seccion" id="historia">
     <h2>Historia</h2>
-    <p>Higuerote tiene raíces indígenas y coloniales. Su nombre proviene del árbol de higuerote, abundante en la zona. A lo largo del tiempo, se ha convertido en un centro pesquero y turístico clave en la región.</p>
+    <p>Higuerote fue originalmente habitada por etnias indígenas como los Caracas. Durante la época colonial, la zona fue utilizada como puerto y punto estratégico para el comercio y la pesca. El nombre proviene del árbol de higuerote, abundante en la zona. A partir del siglo XX, Higuerote se consolidó como destino turístico gracias a sus costas y desarrollo de infraestructuras, lo cual atrajo visitantes nacionales e internacionales.</p>
   </section>
 
   <!-- Sección: Cultura -->
   <section class="seccion" id="cultura">
     <h2>Cultura</h2>
-    <p>La cultura de Higuerote está influenciada por tradiciones afrovenezolanas, especialmente en sus festividades religiosas como las de San Juan. La música de tambores, las danzas y la gastronomía local son parte esencial de su identidad.</p>
+    <p>La cultura de Higuerote está marcada por una fuerte influencia afrovenezolana, visible especialmente en prácticas como las fiestas de San Juan Bautista, caracterizadas por la música de tambores y danzas tradicionales costeñas. La gastronomía destaca por el pescado, los mariscos y platos típicos como el “cabeza e’ pescado” y las arepas de maíz. El sentido de comunidad y la hospitalidad local constituyen rasgos distintivos de su idiosincrasia.</p>
   </section>
-<button class="boton-planeta" onclick="buscarEnGoogle('Higuerote turismo')">🌐</button>
 
-<script>
-  function buscarEnGoogle(tema) {
-    const url = 'https://www.google.com/search?q=' + encodeURIComponent(tema);
-    window.open(url, '_blank');
-}
-</script>
+  <!-- Sección: Turismo y naturaleza -->
+  <section class="seccion" id="turismo">
+    <h2>Turismo y naturaleza</h2>
+    <p>Higuerote es famoso por sus extensas playas como Caracolito, Los Totumos y Buche, ideales para el turismo familiar y deportes acuáticos. Cerca se encuentran los cayos de Chirimena y la laguna de Tacarigua, reservas naturales donde se puede disfrutar de paseos en lancha, kayak, observación de aves y de la flora típica de manglares. El ecoturismo está en auge, con rutas de senderismo e iniciativas para la protección ambiental.</p>
+  </section>
+
+  <!-- Sección: Fiestas y celebraciones -->
+  <section class="seccion" id="fiestas">
+    <h2>Fiestas y celebraciones</h2>
+    <p>Entre las celebraciones más emblemáticas están las fiestas de San Juan en junio, donde la música de tambor, la danza y los rituales religiosos llenan las calles de colores y alegría. Además, destacan las festividades en honor a la Virgen del Carmen, las parrandas decembrinas y los eventos carnestolendos, cada uno con actividades tradicionales, procesiones, ferias gastronómicas y encuentros que muestran el folclore regional.</p>
+  </section>
+
+  <button class="boton-planeta" onclick="buscarEnGoogle('Higuerote turismo')">🌐</button>
+
+  <script>
+    function buscarEnGoogle(tema) {
+      const url = 'https://www.google.com/search?q=' + encodeURIComponent(tema);
+      window.open(url, '_blank');
+    }
+  </script>
 
 </body>
 </html>
