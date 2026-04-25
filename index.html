@@ -4,24 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#28a745">
+  <meta name="theme-color" content="#28a745">
   <title>Vatuma</title>
-    <link rel="stylesheet" href="styles/style.css"/>
-     <link rel="icon" type="image/png" href="img/icon-192.png">
+  <link rel="stylesheet" href="styles/style.css"/>
+  <link rel="icon" type="image/png" href="img/icon-192.png">
 
+  <!-- Firebase App y FCM (compat) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging-compat.js"></script>
 </head>
 <body>
   
   <div id="splash-screen">
-  <div class="splash-content">
-    <img src="img/icon-512.png" alt="Logo TACAI" class="splash-logo">
-    <div class="loader"></div>
-    <h1>Vatuma</h1>
-    <p class="splash-subtitle">Una creación de <strong>Luis Hernández</strong></p>
-       <p style="font-size: 10px; margin-top: 20px; letter-spacing: 2px; opacity: 0.6;">TACAI DIGITAL 2026</p>
-    
+    <div class="splash-content">
+      <img src="img/icon-512.png" alt="Logo TACAI" class="splash-logo">
+      <div class="loader"></div>
+      <h1>Vatuma</h1>
+      <p class="splash-subtitle">Una creación de <strong>Luis Hernández</strong></p>
+      <p style="font-size: 10px; margin-top: 20px; letter-spacing: 2px; opacity: 0.6;">TACAI DIGITAL 2026</p>
+    </div>
   </div>
-</div>
 
   <div class="menu-toggle" onclick="toggleMenu()">☰</div>
   <ul class="nav-links" id="menu">
@@ -32,48 +34,44 @@
   </ul>
 
   <h1 class="titulo">VATUMA</h1>
+  <!-- BOTÓN DE SUSCRIPCIÓN A NOTIFICACIONES -->
+  <button id="suscribirse" style="margin-bottom:20px;">Suscribirse a notificaciones</button>
 
   <div class="carrusel-container">
     <button class="nav-btn prev" onclick="moverCarrusel(-1)">❮</button>
     <button class="nav-btn next" onclick="moverCarrusel(1)">❯</button>
 
-  <div class="slider" id="slider">
+    <div class="slider" id="slider">
       <div class="contenedor">
         <img src="img/Birongo.jpg" alt="Birongo">
         <h2><a href="places/Birongo/index.html">Birongo</a></h2>
         <p>Birongo es un pueblo mágico del estado Miranda...</p>
       </div>
-
       <div class="contenedor">
         <img src="img/Caucagua.jpg" alt="Caucagua">
         <h2><a href="places/Caucagua/index.html">Caucagua</a></h2>
         <p>Caucagua, ubicada en el corazón de Barlovento...</p>
       </div>
-
       <div class="contenedor">
         <img src="img/curiepe.jpg" alt="Curiepe">
         <h2><a href="places/Curiepe/index.html">Curiepe</a></h2>
         <p>Curiepe es cuna de la cultura afrovenezolana...</p>
       </div>
-
       <div class="contenedor">
         <img src="img/higuerote.jpg" alt="Higuerote">
         <h2><a href="places/Higuerote/index.html">Higuerote</a></h2>
         <p>Higuerote es el principal destino turístico...</p>
       </div>
-
       <div class="contenedor">
         <img src="img/Mamporal.jpg" alt="Mamporal">
         <h2><a href="places/Mamporal/index.html">Mamporal</a></h2>
         <p>Mamporal, capital del municipio Buroz...</p>
       </div>
-
       <div class="contenedor">
         <img src="img/jose.jpg" alt="San José">
         <h2><a href="places/San José de Barlovento/index.html">San José de Barlovento</a></h2>
         <p>San José de Barlovento es una ciudad cálida...</p>
       </div>
-
       <div class="contenedor">
         <img src="img/Tacarigua.jpg" alt="Tacarigua">
         <h2><a href="places/Tacarigua/index.html">Tacarigua</a></h2>
@@ -85,7 +83,7 @@
   <script>
     function toggleMenu() {
       document.getElementById("menu").classList.toggle("active");
-}
+    }
 
     const slider = document.getElementById('slider');
     const contenedores = slider.querySelectorAll('.contenedor');
@@ -94,33 +92,84 @@
     function moverCarrusel(direccion) {
       index += direccion;
       if (index < 0) index = contenedores.length - 1;
-      if (index>= contenedores.length) index = 0;
+      if (index >= contenedores.length) index = 0;
       const scrollX = contenedores[index].offsetLeft;
-      slider.scrollTo({ left: scrollX, behavior: 'smooth'});
-}
+      slider.scrollTo({ left: scrollX, behavior: 'smooth' });
+    }
 
     setInterval(() => moverCarrusel(1), 80000);
-  
-  window.addEventListener('load', () => {
-  const splash = document.getElementById('splash-screen');
-  // Pequeño retraso de 1.5 segundos para que el usuario aprecie el logo
-  setTimeout(() => {
-    splash.classList.add('hidden');
-  }, 2500);
-});
+
+    window.addEventListener('load', () => {
+      const splash = document.getElementById('splash-screen');
+      setTimeout(() => {
+        splash.classList.add('hidden');
+      }, 2500);
+    });
+
+    // ----------- PUSH NOTIFICATION LOGIC -----------
+    // Configuración de Firebase (REEMPLAZA con tus datos)
+    const firebaseConfig = {
+      apiKey: "TU_API_KEY",
+      authDomain: "TU_DOMINIO.firebaseapp.com",
+      projectId: "TU_PROJECT_ID",
+      storageBucket: "TU_BUCKET.appspot.com",
+      messagingSenderId: "TU_MESSAGING_SENDER_ID",
+      appId: "TU_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    // Inicializa FCM
+    const messaging = firebase.messaging();
+
+    // Registra el service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('firebase-messaging-sw.js')
+        .then(function(registration) {
+          console.log('Service Worker registrado con éxito:', registration);
+        })
+        .catch(function(err) {
+          console.error('Error registrando el Service Worker:', err);
+        });
+    }
+
+    document.getElementById('suscribirse').onclick = function() {
+      Notification.requestPermission().then(function(permission) {
+        if (permission === 'granted') {
+          // Reemplaza 'TU_VAPID_KEY_PUBLICA' por tu clave pública Web Push de Firebase
+          messaging.getToken({ vapidKey: 'TU_VAPID_KEY_PUBLICA' }).then((currentToken) => {
+            if (currentToken) {
+              console.log("Token del usuario:", currentToken);
+              alert("¡Suscripción exitosa! Ahora recibirás notificaciones.");
+              // Aquí podrías guardar el token en tu backend para notificaciones personalizadas
+            } else {
+              alert("No se pudo obtener el token de notificación.");
+              console.warn('No se obtuvo token.');
+            }
+          }).catch((err) => {
+            console.error("Error al obtener el token:", err);
+          });
+        } else {
+          alert("No permitiste notificaciones.");
+        }
+      });
+    };
+
+    // Recibe notificaciones en primer plano
+    messaging.onMessage(function(payload) {
+      alert(`🔔 ${payload.notification.title}\n${payload.notification.body}`);
+    });
+    // -----------------------------------------------
   </script>
 
 </body>
- <footer class="footer-tacai">
-    <div class="footer-content">
-        <p>© <span id="year-copy">2026</span> <strong>Vatuma</strong> | Diseñado y desarrollado por: <strong>Luis Hernández</strong></p>
-        <p style="font-size: 11px; margin-top: -8px; opacity: 0.7;">Tecnología con Raíces • TACAI Project</p>
-        
-        <p class="feedback-text">
-            ¿Tienes alguna idea para mejorar esta herramienta? 
-            <a href="mailto:tacai2753@gmail.com?subject=Feedback%20Vatuma" class="soft-link">Escríbeme aquí</a>.
-        </p>
-    </div>
+<footer class="footer-tacai">
+  <div class="footer-content">
+    <p>© <span id="year-copy">2026</span> <strong>Vatuma</strong> | Diseñado y desarrollado por: <strong>Luis Hernández</strong></p>
+    <p style="font-size: 11px; margin-top: -8px; opacity: 0.7;">Tecnología con Raíces • TACAI Project</p>
+    <p class="feedback-text">
+      ¿Tienes alguna idea para mejorar esta herramienta? 
+      <a href="mailto:tacai2753@gmail.com?subject=Feedback%20Vatuma" class="soft-link">Escríbeme aquí</a>.
+    </p>
+  </div>
 </footer>
-
-</html>
+  </html>
