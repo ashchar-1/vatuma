@@ -9,9 +9,7 @@
   <link rel="stylesheet" href="styles/style.css"/>
   <link rel="icon" type="image/png" href="img/icon-192.png">
 
-  <!-- Firebase App y FCM (compat) -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging-compat.js"></script>
+  
 </head>
 <body>
   
@@ -81,84 +79,50 @@
   </div>
 
   <script>
-    function toggleMenu() {
-      document.getElementById("menu").classList.toggle("active");
+    
+          // Control del menú lateral
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("active");
+}
+
+// Lógica del Slider 3D
+const contenedores = document.querySelectorAll('.contenedor');
+let indexActual = 0;
+
+function actualizarCarrusel() {
+  contenedores.forEach((c, i) => {
+    // Limpiamos clases previas
+    c.classList.remove('active', 'prev-slide', 'next-slide');
+    
+    if (i === indexActual) {
+      // Elemento al centro
+      c.classList.add('active');
+    } else if (i === (indexActual - 1 + contenedores.length) % contenedores.length) {
+      // Elemento a la izquierda (profundidad)
+      c.classList.add('prev-slide');
+    } else if (i === (indexActual + 1) % contenedores.length) {
+      // Elemento a la derecha (profundidad)
+      c.classList.add('next-slide');
     }
+  });
+}
 
-    const slider = document.getElementById('slider');
-    const contenedores = slider.querySelectorAll('.contenedor');
-    let index = 0;
+function moverCarrusel(direccion) {
+  indexActual = (indexActual + direccion + contenedores.length) % contenedores.length;
+  actualizarCarrusel();
+}
 
-    function moverCarrusel(direccion) {
-      index += direccion;
-      if (index < 0) index = contenedores.length - 1;
-      if (index >= contenedores.length) index = 0;
-      const scrollX = contenedores[index].offsetLeft;
-      slider.scrollTo({ left: scrollX, behavior: 'smooth' });
-    }
+// Inicio automático del carrusel
+actualizarCarrusel();
+setInterval(() => moverCarrusel(1), 5000); 
 
-    setInterval(() => moverCarrusel(1), 80000);
-
-    window.addEventListener('load', () => {
-      const splash = document.getElementById('splash-screen');
-      setTimeout(() => {
-        splash.classList.add('hidden');
-      }, 2500);
-    });
-
-    // ----------- PUSH NOTIFICATION LOGIC -----------
-    // Configuración de Firebase (REEMPLAZA con tus datos)
-    const firebaseConfig = {
-      apiKey: "TU_API_KEY",
-      authDomain: "TU_DOMINIO.firebaseapp.com",
-      projectId: "TU_PROJECT_ID",
-      storageBucket: "TU_BUCKET.appspot.com",
-      messagingSenderId: "TU_MESSAGING_SENDER_ID",
-      appId: "TU_APP_ID"
-    };
-    firebase.initializeApp(firebaseConfig);
-
-    // Inicializa FCM
-    const messaging = firebase.messaging();
-
-    // Registra el service worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('firebase-messaging-sw.js')
-        .then(function(registration) {
-          console.log('Service Worker registrado con éxito:', registration);
-        })
-        .catch(function(err) {
-          console.error('Error registrando el Service Worker:', err);
-        });
-    }
-
-    document.getElementById('suscribirse').onclick = function() {
-      Notification.requestPermission().then(function(permission) {
-        if (permission === 'granted') {
-          // Reemplaza 'TU_VAPID_KEY_PUBLICA' por tu clave pública Web Push de Firebase
-          messaging.getToken({ vapidKey: 'TU_VAPID_KEY_PUBLICA' }).then((currentToken) => {
-            if (currentToken) {
-              console.log("Token del usuario:", currentToken);
-              alert("¡Suscripción exitosa! Ahora recibirás notificaciones.");
-              // Aquí podrías guardar el token en tu backend para notificaciones personalizadas
-            } else {
-              alert("No se pudo obtener el token de notificación.");
-              console.warn('No se obtuvo token.');
-            }
-          }).catch((err) => {
-            console.error("Error al obtener el token:", err);
-          });
-        } else {
-          alert("No permitiste notificaciones.");
-        }
-      });
-    };
-
-    // Recibe notificaciones en primer plano
-    messaging.onMessage(function(payload) {
-      alert(`🔔 ${payload.notification.title}\n${payload.notification.body}`);
-    });
-    // -----------------------------------------------
+// Control del Splash Screen al cargar la página
+window.addEventListener('load', () => {
+  const splash = document.getElementById('splash-screen');
+  setTimeout(() => {
+    splash.classList.add('hidden');
+  }, 2500);
+});
   </script>
 
 </body>
