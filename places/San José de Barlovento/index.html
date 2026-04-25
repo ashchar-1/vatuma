@@ -11,25 +11,24 @@
 <body>
 
   <!-- Imagen principal -->
-<h2>San José de Barlovento /h2> 
+  <h2>San José de Barlovento</h2> 
   <div class="imagen-principal" style="background-image: url('jose.jpg');"></div>
-
-
-
 
   <!-- Menú de navegación -->
   <nav class="menu">
     <a href="#ubicacion">Ubicación geográfica</a>
     <a href="#historia">Historia</a>
     <a href="#cultura">Cultura</a>
+    <a href="#turismo">Turismo y naturaleza</a>
+    <a href="#fiestas">Fiestas y celebraciones</a>
   </nav>
 
   <!-- Sección: Ubicación geográfica -->
   <section class="seccion" id="ubicacion">
     <h2>Ubicación geográfica</h2>
-    <p>San José de Barlovento está ubicado en el estado Miranda, Venezuela. Forma parte de la región de Barlovento, reconocida por su clima tropical y paisajes exuberantes.</p>
+    <p>San José de Barlovento está ubicado al norte del estado Miranda, en Venezuela, en la región de Barlovento, célebre por su clima tropical y la fertilidad de sus tierras. Limita con los municipios Andrés Bello y Páez, y está rodeado de plantaciones de cacao y zonas rurales de gran belleza natural. Es accesible desde Caracas en aproximadamente dos horas por carretera.</p>
     <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.019319865239!2d-66.661111!3d10.472222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a5f7e3f6c7b3b%3A0x7f2e2f7e3f6c7b3b!2sSan%20Jos%C3%A9%20de%20Barlovento%2C%20Miranda%2C%20Venezuela!5e0!3m2!1ses!2sve!4v0000000000000"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.019319865239!2d-66.661111!3d10.472222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a5f7e3f6c7b3b%3A0x7f2e2f7e3f6c7b3b!2sSan%20Jos%C3%A9%20de%20Barlovento!5e0!3m2!1ses-419!2sve!4v1683720173835!5m2!1ses-419!2sve"
       allowfullscreen=""
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade">
@@ -39,23 +38,39 @@
   <!-- Sección: Historia -->
   <section class="seccion" id="historia">
     <h2>Historia</h2>
-    <p>San José de Barlovento tiene raíces profundas en la historia afrovenezolana. Fue fundado por comunidades descendientes de africanos esclavizados, que conservaron sus tradiciones, creencias y formas de organización social.</p>
+    <p>San José de Barlovento tiene raíces profundas en la historia afrovenezolana. Fue fundado en el siglo XVIII por comunidades descendientes de africanos esclavizados que trabajaron en haciendas cacaoteras de la zona. A lo largo de los años, las tradiciones, creencias y formas de organización social propias de estas comunidades han perdurado, fusionándose con elementos indígenas y europeos. La localidad es reconocida como cuna de importantes expresiones culturales y de resistencia afrodescendiente en Venezuela.</p>
   </section>
 
   <!-- Sección: Cultura -->
   <section class="seccion" id="cultura">
     <h2>Cultura</h2>
-    <p>La cultura de San José de Barlovento es rica en expresiones musicales, especialmente el tambor barloventeño. Las festividades religiosas, como las de San Juan y San José, son celebradas con danzas, cantos y rituales que reflejan la identidad afrodescendiente.</p>
+    <p>La cultura local se distingue por su música vibrante, especialmente los tambores de Barlovento, y su tradición oral en cuentos, bailes y cantos. Entre las principales celebraciones religiosas y populares están las festividades de San Juan, San José y la emblemática Parranda de los Muertos. El sincretismo religioso, las danzas y la gastronomía a base de coco, cacao y plátano forman parte central de la identidad de la comunidad.</p>
   </section>
-<button class="boton-planeta" onclick="buscarEnGoogle('San José de Barlovento turismo')">🌐</button>
+
+  <!-- Sección: Turismo y naturaleza -->
+  <section class="seccion" id="turismo">
+    <h2>Turismo y naturaleza</h2>
+    <p>La zona atrae a visitantes por sus paisajes tropicales, playas cercanas, ríos y vegetación exuberante. Muchos turistas acuden a las plantaciones de cacao y a recorridos en bicicleta para conocer la riqueza agrícola de la región. Destacan las fiestas tradicionales y muestras gastronómicas, así como rutas de agroturismo y ecoturismo en los alrededores.</p>
+  </section>
+
+  <!-- Sección: Fiestas y celebraciones -->
+  <section class="seccion" id="fiestas">
+    <h2>Fiestas y celebraciones</h2>
+    <ul>
+      <li><strong>Fiesta de San José:</strong> Patrono del pueblo, celebrada el 19 de marzo con procesiones, música y danzas.</li>
+      <li><strong>San Juan Bautista:</strong> En junio, el repique de tambores y la devoción se mezclan en las calles.</li>
+      <li><strong>Parranda de los Muertos:</strong> Tradición única en la que los habitantes se disfrazan de “muertos” y recorren el pueblo al ritmo de la música, recogiendo donaciones y recordando a los seres queridos fallecidos. La celebración, reconocida como patrimonio cultural local, destaca por su carácter ritual, teatral y festivo, fusionando creencias ancestrales con el sentido comunitario.</li>
+      <li><strong>Otras fiestas:</strong> Destacan celebraciones religiosas, bailes y ferias durante todo el año.</li>
+    </ul>
+  </section>
+  <button class="boton-planeta" onclick="buscarEnGoogle('San José de Barlovento turismo')">🌐</button>
 
 <script>
   function buscarEnGoogle(tema) {
     const url = 'https://www.google.com/search?q=' + encodeURIComponent(tema);
     window.open(url, '_blank');
-}
+  }
 </script>
 
 </body>
 </html>
- 
