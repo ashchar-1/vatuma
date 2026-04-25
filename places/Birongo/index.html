@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 <head>
   <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
@@ -9,52 +8,81 @@
 </head>
 
 <body>
-
-  <!-- Imagen principal -->
-  <h2>Birongo </h2>
+  <h2>Birongo</h2>
   <div class="imagen-principal" style="background-image: url('Birongo.jpg');"></div>
 
-  <!-- Menú de navegación -->
   <nav class="menu">
     <a href="#ubicacion">Ubicación geográfica</a>
     <a href="#historia">Historia</a>
     <a href="#cultura">Cultura</a>
+    <a href="#turismo">Turismo y naturaleza</a>
+    <a href="#fiestas">Fiestas y celebraciones</a>
+    
   </nav>
 
-  <!-- Sección: Ubicación geográfica -->
+  <!-- Ubicación -->
   <section class="seccion" id="ubicacion">
     <h2>Ubicación geográfica</h2>
-    <p>Birongo es una localidad del estado Miranda, Venezuela, ubicada en el municipio Brión. Rodeado de montañas y vegetación tropical, es conocido por su belleza natural y su conexión espiritual con la tierra.</p>
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.019319865239!2d-66.661111!3d10.472222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a5f7e3f6c7b3b%3A0x7f2e2f7e3f6c7b3b!2sBirongo%2C%20Miranda%2C%20Venezuela!5e0!3m2!1ses!2sve!4v0000000000000"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
+    <p>
+      Birongo está situado en el municipio Brión, estado Miranda, Venezuela. Rodeado de montañas y ríos de aguas cristalinas, se destaca por sus paisajes naturales, cuevas, flora autóctona y su clima tropical húmedo.
+    </p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.019319865239!2d-66.661111!3d10.472222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a5f7e3f6c7b3b%3A0x7f2e2f7e3f6c7b3b!2sBirongo!5e0!3m2!1ses!2sve!4v1664305420119!5m2!1ses!2sve" width="100%" height="200" allowfullscreen="true" style="border:0;"></iframe>
   </section>
 
-  <!-- Sección: Historia -->
+  <!-- Historia -->
   <section class="seccion" id="historia">
     <h2>Historia</h2>
-    <p>Birongo tiene raíces profundas en la cultura afrovenezolana. Fue fundado por comunidades descendientes de africanos esclavizados que conservaron sus tradiciones, saberes ancestrales y prácticas espirituales.</p>
+    <p>
+      Birongo es reconocido por su herencia afrodescendiente. Fundado por antiguos esclavos, fue un refugio de resistencia y preservación de las tradiciones africanas. Destacan las leyendas de la rebelión de Birongo y la figura de la célebre “Reina María Lionza”, además de la práctica ancestral de ritos y saberes curativos, bailes, y su vinculación con el espiritismo Marialioncero.
+    </p>
+    <p>
+      Hay registros de que en época colonial, Birongo sirvió de refugio a cimarrones que buscaron libertad y fundaron familias cuya cultura aún permanece. La población mezcla raíces africanas, indígenas y europeas.
+    </p>
   </section>
 
-  <!-- Sección: Cultura -->
+  <!-- Cultura -->
   <section class="seccion" id="cultura">
     <h2>Cultura</h2>
-    <p>La cultura de Birongo está marcada por la espiritualidad, el uso de plantas medicinales, y la práctica del espiritismo. Sus habitantes celebran rituales y festividades que conectan con sus ancestros y la naturaleza.</p>
+    <p>
+      La identidad bironguera está marcada por el respeto a la naturaleza, el uso de plantas medicinales, la música de tambores, bailes de tambor redondo, fulía, y las fiestas de San Juan. Muchas familias practican el espiritismo y la santería, manteniendo vivas tradiciones orales, rituales, y la devoción a María Lionza, Negro Felipe y otras deidades populares.
+    </p>
   </section>
-<button class="boton-planeta" onclick="buscarEnGoogle('Birongo turismo')">🌐</button>
 
+  <!-- Turismo y naturaleza -->
+  <section class="seccion" id="turismo">
+    <h2>Turismo y naturaleza</h2>
+    <p>
+      Birongo posee una amplia variedad de atractivos naturales: pozos y ríos como el Pozo de Birongo, cuevas misteriosas, senderos en plena selva, y miradores de montaña. Es ideal para el ecoturismo, avistamiento de aves y paseos guiados para aprender sobre plantas medicinales o mitos locales.
+    </p>
+    <ul>
+      <li>Ríos y balnearios naturales</li>
+      <li>Cuevas y petroglifos</li>
+      <li>Senderismo y observación de flora y fauna</li>
+      <li>Visitas guiadas a casas de espiritualidad y tradición</li>
+    </ul>
+  </section>
 
+  <!-- Fiestas y celebraciones -->
+  <section class="seccion" id="fiestas">
+    <h2>Fiestas y celebraciones</h2>
+    <ul>
+      <li><strong>Fiesta de San Juan Bautista (junio):</strong> bailes de tambor, procesiones y rituales comunitarios.</li>
+      <li><strong>Velorios de Cruz de Mayo:</strong> cantos, fulía y rezos tradicionales.</li>
+      <li>Rituales de María Lionza y otras festividades sincréticas a lo largo del año.</li>
+    </ul>
+  </section>
 
-<script>
-  function buscarEnGoogle(tema) {
-    const url = 'https://www.google.com/search?q=' + encodeURIComponent(tema);
-    window.open(url, '_blank');
-}
-</script>
+  <!-- Información práctica -->
+  
+
+  <button class="boton-planeta" onclick="buscarEnGoogle('Birongo turismo')">🌐</button>
+
+  <script>
+    function buscarEnGoogle(tema) {
+      const url = 'https://www.google.com/search?q=' + encodeURIComponent(tema);
+      window.open(url, '_blank');
+    }
+  </script>
 
 </body>
-</html>
- 
+  </html>
