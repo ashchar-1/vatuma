@@ -75,110 +75,94 @@
   </div>
 
   <script>
-    // Control del menú lateral
-    function toggleMenu() {
-      document.getElementById("menu").classList.toggle("active");
+    // --- CONTROL DEL MENÚ LATERAL ---
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("active");
+}
+
+// --- LÓGICA DEL SLIDER 3D (MANUAL) ---
+const slider = document.getElementById('slider');
+const contenedores = document.querySelectorAll('.contenedor');
+let indexActual = 0;
+
+// Función para posicionar las tarjetas en 3D
+function actualizarCarrusel() {
+  contenedores.forEach((c, i) => {
+    // Limpiamos clases de la posición anterior
+    c.classList.remove('active', 'prev-slide', 'next-slide');
+    
+    if (i === indexActual) {
+      // Tarjeta al frente (Foco)
+      c.classList.add('active');
+    } else if (i === (indexActual - 1 + contenedores.length) % contenedores.length) {
+      // Tarjeta a la izquierda (Profundidad)
+      c.classList.add('prev-slide');
+    } else if (i === (indexActual + 1) % contenedores.length) {
+      // Tarjeta a la derecha (Profundidad)
+      c.classList.add('next-slide');
     }
+  });
+}
 
-    // --- LÓGICA DEL SLIDER 3D ---
-    const slider = document.getElementById('slider');
-    const contenedores = document.querySelectorAll('.contenedor');
-    let indexActual = 0;
-    let autoPlayInterval;
+// Función para cambiar de posición
+function moverCarrusel(direccion) {
+  indexActual = (indexActual + direccion + contenedores.length) % contenedores.length;
+  actualizarCarrusel();
+}
 
-    function actualizarCarrusel() {
-      contenedores.forEach((c, i) => {
-        c.classList.remove('active', 'prev-slide', 'next-slide');
-        
-        if (i === indexActual) {
-          c.classList.add('active');
-        } else if (i === (indexActual - 1 + contenedores.length) % contenedores.length) {
-          c.classList.add('prev-slide');
-        } else if (i === (indexActual + 1) % contenedores.length) {
-          c.classList.add('next-slide');
-        }
-      });
-    }
+// --- SOPORTE PARA GESTOS (SWIPE Y DRAG) ---
+let startX = 0;
+let endX = 0;
+let isDragging = false;
 
-    function moverCarrusel(direccion) {
-      indexActual = (indexActual + direccion + contenedores.length) % contenedores.length;
-      actualizarCarrusel();
-    }
+// Eventos para móviles (Touch)
+slider.addEventListener('touchstart', (e) => {
+  startX = e.changedTouches[0].screenX;
+}, {passive: true});
 
-    // Funciones para manejar la interacción manual y pausar el autoplay
-    function iniciarAutoPlay() {
-      autoPlayInterval = setInterval(() => moverCarrusel(1), 5000);
-    }
+slider.addEventListener('touchend', (e) => {
+  endX = e.changedTouches[0].screenX;
+  manejarDeslizo();
+});
 
-    function resetearAutoPlay() {
-      clearInterval(autoPlayInterval);
-      iniciarAutoPlay();
-    }
+// Eventos para PC (Mouse Drag)
+slider.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  startX = e.pageX;
+});
 
-    function interaccionUsuario(direccion) {
-      moverCarrusel(direccion);
-      resetearAutoPlay();
-    }
+slider.addEventListener('mouseup', (e) => {
+  if (!isDragging) return;
+  isDragging = false;
+  endX = e.pageX;
+  manejarDeslizo();
+});
 
-    // --- EVENTOS TÁCTILES Y DE ARRASTRE (SWIPE/DRAG) ---
-    let startX = 0;
-    let endX = 0;
-    let isDragging = false;
+slider.addEventListener('mouseleave', () => {
+  isDragging = false;
+});
 
-    // Para móviles (Touch)
-    slider.addEventListener('touchstart', (e) => {
-      startX = e.changedTouches[0].screenX;
-      clearInterval(autoPlayInterval); // Pausa al tocar
-    }, {passive: true});
+// Determina si el movimiento fue suficiente para pasar la tarjeta
+function manejarDeslizo() {
+  const sensibilidad = 50; // Píxeles mínimos para activar el cambio
+  if (startX - endX > sensibilidad) {
+    moverCarrusel(1);  // Deslizó a la izquierda -> Siguiente
+  } else if (endX - startX > sensibilidad) {
+    moverCarrusel(-1); // Deslizó a la derecha -> Anterior
+  }
+}
 
-    slider.addEventListener('touchend', (e) => {
-      endX = e.changedTouches[0].screenX;
-      manejarSwipe();
-      iniciarAutoPlay(); // Reanuda al soltar
-    });
+// --- INICIALIZACIÓN ---
+// Cargar el carrusel en la posición inicial
+actualizarCarrusel();
 
-    // Para PC (Mouse)
-    slider.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      startX = e.pageX;
-      clearInterval(autoPlayInterval);
-    });
-
-    slider.addEventListener('mouseup', (e) => {
-      if (!isDragging) return;
-      isDragging = false;
-      endX = e.pageX;
-      manejarSwipe();
-      iniciarAutoPlay();
-    });
-
-    slider.addEventListener('mouseleave', () => {
-      if (isDragging) {
-        isDragging = false;
-        iniciarAutoPlay();
-      }
-    });
-
-    function manejarSwipe() {
-      const umbral = 50; // Distancia mínima para considerar que fue un swipe
-      if (startX - endX > umbral) {
-        moverCarrusel(1); // Deslizó a la izquierda -> Siguiente
-      } else if (endX - startX > umbral) {
-        moverCarrusel(-1); // Deslizó a la derecha -> Anterior
-      }
-    }
-
-    // Inicialización
-    actualizarCarrusel();
-    iniciarAutoPlay();
-
-    // Control del Splash Screen
-    window.addEventListener('load', () => {
-      const splash = document.getElementById('splash-screen');
-      setTimeout(() => {
-        splash.classList.add('hidden');
-      }, 2500);
-    });
+// Quitar el splash screen después de cargar
+window.addEventListener('load', () => {
+  const splash = document.getElementById('splash-screen');
+  setTimeout(() => {
+    splash.classList.add('hidden');
+  }, 2000);
+});
   </script>
 
 </body>
