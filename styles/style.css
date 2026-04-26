@@ -207,28 +207,6 @@ a {
   transform: translate3d(110%, 0, -200px) rotateY(-30deg);
 }
 
-/* Botones de navegación del carrusel */
-.nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #5bc0de;
-  color: white;
-  border: none;
-  font-size: 24px;
-  padding: 10px 15px;
-  cursor: pointer;
-  border-radius: 50%;
-  z-index: 20;
-  transition: background-color 0.3s ease;
-}
-
-.nav-btn:hover {
-  background-color: #31b0d5;
-}
-
-.prev { left: 10px; }
-.next { right: 10px; }
 
 /* =========================================
    5. BOTONES FLOTANTES
